@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Download, ChevronLeft, ChevronRight, Star, Phone, Mail, MapPin, Building2, Lightbulb, Scale, BookOpen } from 'lucide-react'
 import { motion, useAnimation } from 'framer-motion'
-
+import Reservation from '@/components/ui/reservation'
 
 const testimonials = [
   {
@@ -445,7 +445,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Make an Appointment</h2>
           <div className="flex">
             <div className="flex-grow">
-              <div className="calendly-inline-widget" data-url="https://calendly.com/carlie4carliejeff50/30min" style={{minWidth: "320px", height: "700px"}}></div>
+             
+                 <Reservation/>
+             
             </div>
             <div className="ml-8 flex flex-col space-y-4">
               <button className="bg-gray-800 text-white px-4 py-2 rounded-full font-semibold hover:bg-gray-700 transition duration-300 flex items-center text-sm">
