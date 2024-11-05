@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-export default function AdminLogin({ isAuthenticated }) {
+export default function AdminLogin({ isAuthenticated }: { isAuthenticated: boolean }) {  
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')

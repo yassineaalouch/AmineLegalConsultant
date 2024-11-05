@@ -33,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     } catch (error) {
       console.error('Error saving content:', error);
-      res.status(500).json({ message: 'Error saving content', error: error.message });
+      res.status(500).json({ message: 'Error saving content'});
     }
   } else {
     res.setHeader('Allow', ['POST']);

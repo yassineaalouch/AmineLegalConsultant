@@ -101,12 +101,12 @@ export default function AdminDashboard() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0)
   const controls = useAnimation()
-  const testimonialRef = useRef(null)
-  const appointmentRef = useRef(null)
   const router = useRouter()
+  const testimonialRef = useRef<HTMLDivElement>(null);
+  const appointmentRef = useRef<HTMLDivElement>(null);
 
   const [editMode, setEditMode] = useState(false)
-  const [editingImage, setEditingImage] = useState<string | null>(null)
+  const [, setEditingImage] = useState<string | null>(null)
   const [images, setImages] = useState({
     'hero-image': '/nigga.png',
     'intro-image': '/nigga1.jpeg',
@@ -171,9 +171,9 @@ export default function AdminDashboard() {
     appointmentRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const scrollToTestimonials = () => {
-    testimonialRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
+  // const scrollToTestimonials = () => {
+  //   testimonialRef.current?.scrollIntoView({ behavior: 'smooth' })
+  // }
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>, imageId: string) => {
     const file = event.target.files?.[0]
@@ -256,26 +256,26 @@ export default function AdminDashboard() {
       }
     } catch (error) {
       console.error('Error saving content:', error);
-      alert(`Failed to save content: ${error.message}`);
+      alert(`Failed to save content: `);
     }
   };
 
-  const fetchUpdatedContent = async () => {
-    try {
-      const response = await fetch('/api/get-content');
-      if (response.ok) {
-        const updatedContent = await response.json();
-        setImages(updatedContent.images);
-        setTestimonials(updatedContent.testimonials);
-        setExperiences(updatedContent.experiences);
-      } else {
-        throw new Error('Failed to fetch updated content');
-      }
-    } catch (error) {
-      console.error('Error fetching updated content:', error);
-      alert('Failed to fetch updated content. Please refresh the page.');
-    }
-  };
+  // const fetchUpdatedContent = async () => {
+  //   try {
+  //     const response = await fetch('/api/get-content');
+  //     if (response.ok) {
+  //       const updatedContent = await response.json();
+  //       setImages(updatedContent.images);
+  //       setTestimonials(updatedContent.testimonials);
+  //       setExperiences(updatedContent.experiences);
+  //     } else {
+  //       throw new Error('Failed to fetch updated content');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching updated content:', error);
+  //     alert('Failed to fetch updated content. Please refresh the page.');
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800">
@@ -297,9 +297,9 @@ export default function AdminDashboard() {
             <Link href="/services" className="hover:text-gray-300 transition-all duration-300 ease-in-out transform hover:scale-110">
               Services
             </Link>
-            <button onClick={scrollToTestimonials} className="hover:text-gray-300 transition-all duration-300 ease-in-out transform hover:scale-110">
+            <Link href="/#testimonials" className="hover:text-gray-300 transition-all duration-300 ease-in-out transform hover:scale-110">
               Testimonials
-            </button>
+            </Link>
           </nav>
           <div className="flex items-center space-x-4">
             <button
@@ -403,11 +403,11 @@ export default function AdminDashboard() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-6xl font-bold text-gray-800">Hi,</h2>
-              <h2 className="text-6xl font-bold text-gray-800">I'm <span className="text-gray-600">Yassine</span></h2>
+              <h2 className="text-6xl font-bold text-gray-800">I&apos;m <span className="text-gray-600">Yassine</span></h2>
               <p className="text-2xl text-gray-600">Legal Consultant</p>
               <a href="#appointment" target="_blank">
               <button className="bg-gray-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition duration-300 flex items-center mt-5">
-                Let's work <span className="ml-2">→</span>
+                Let&apos;s work <span className="ml-2">→</span>
               </button></a>
               <div className="flex items-center space-x-2">
                 <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
@@ -442,11 +442,11 @@ export default function AdminDashboard() {
               <div className="absolute top-4 right-4 space-y-2">
                 <p className="text-sm font-semibold text-gray-600">Expert on</p>
                 <p className="text-lg font-bold text-gray-800">Based in New York</p>
-                <p className="text-lg text-gray-600">I'm a legal consultant and</p>
+                <p className="text-lg text-gray-600">I&apos;m a legal consultant and</p>
                 <p className="text-lg text-gray-600">corporate law specialist.</p>
                 <p className="text-sm mt-4 text-gray-600">Looking for expert legal advice to</p>
                 <p className="text-sm text-gray-600">protect your business interests?</p>
-                <p className="text-sm text-gray-600">Let's discuss your case.</p>
+                <p className="text-sm text-gray-600">Let&apos;s discuss your case.</p>
               </div>
               <a href="#" className="absolute bottom-4 left-16 bg-white text-gray-800 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition duration-300 flex items-center">
                 <Download className="w-4 h-4 mr-2" /> Download CV
@@ -461,7 +461,7 @@ export default function AdminDashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h3  className="text-2xl font-bold text-center mb-8">Companies I've Worked With</h3>
+          <h3  className="text-2xl font-bold text-center mb-8">Companies I&apos;ve Worked With</h3>
           <div className="relative overflow-hidden h-20">
             <motion.div
               className="flex absolute"
@@ -571,20 +571,19 @@ export default function AdminDashboard() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl font-bold text-center mb-4">Testimonials</h2>
-          <h3 className="text-2xl font-semibold text-center mb-12">We care about our customers' experience</h3>
+          <h3 className="text-2xl font-semibold text-center mb-12">We care about our customers&apos; experience</h3>
           <div className="relative">
             <div className="flex justify-between gap-8">
               {testimonials.slice(currentTestimonialIndex, currentTestimonialIndex + 3).map((testimonial) => (
                 <div key={testimonial.id} className="bg-gray-700 p-6 rounded-lg shadow-lg flex-1 relative">
                   <div className="flex justify-center mb-4">
                     <div className="relative">
-                      <Image
-                        src={images[`testimonial-${testimonial.id}`]}
-                        alt={testimonial.name}
-                        width={80}
-                        height={80}
-                        className="rounded-full"
-                      />
+                    <Image
+                      src={images[`testimonial-${testimonial.id}` as keyof typeof images]}
+                      alt={testimonial.name}
+                      width={80}
+                      height={80}
+                    />
                       {editMode && (
                         <label htmlFor={`testimonial-${testimonial.id}-upload`} className="absolute bottom-0 right-0 bg-white p-1 rounded-full cursor-pointer">
                           <input

@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react'
+import {  Mail, Phone, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Twitter as TwitterIcon, Facebook as FacebookIcon, Instagram as InstagramIcon } from 'lucide-react'
 
@@ -58,9 +58,9 @@ export default function Services() {
             <Link href="/services" className="hover:text-gray-300 transition-all duration-300 ease-in-out transform hover:scale-110">
               Services
             </Link>
-            <button onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-gray-300 transition-all duration-300 ease-in-out transform hover:scale-110">
+            <Link href="/#testimonials" className="hover:text-gray-300 transition-all duration-300 ease-in-out transform hover:scale-110">
               Testimonials
-            </button>
+            </Link>
           </nav>
           <div className="flex items-center space-x-4">
             <TwitterIcon className="w-5 h-5 hover:text-gray-300 cursor-pointer" />
@@ -106,7 +106,7 @@ export default function Services() {
               <div>
                 <h3 className="text-xl font-semibold mb-4">New York</h3>
                 <p className="mb-2"><Mail className="inline-block mr-2" /> newyork@legaladvice.com</p>
-                <p className="mb-2"><Phone className="inline-block mr-2" /> +1 212 555 1234</p>
+                <p className="mb-2"><Phone className="inline-block mr-2" /> +212 555 1234</p>
                 <p className="mb-2">
                   <MapPin className="inline-block mr-2" />
                   123 Legal Street,<br />
